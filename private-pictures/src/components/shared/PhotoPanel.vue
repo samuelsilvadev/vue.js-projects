@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  props: ['title']
-}
+  props: ["title"]
+};
 </script>
 
 <style scoped>
@@ -26,11 +26,10 @@ export default {
 
 .photo-panel__title {
   background-color: lightblue;
-  border: 2px solid;
+  border-bottom: 2px solid;
   margin: 0 0 15px 0;
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
 }
 </style>
-
