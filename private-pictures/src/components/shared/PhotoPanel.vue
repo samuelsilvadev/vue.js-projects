@@ -3,9 +3,11 @@
     <h2 class="photo-panel__title" v-on:dblclick="visible = !visible">
       {{ title }}
     </h2>
-    <div v-show="visible">
-      <slot />
-    </div>
+    <transition name="panel-fade">
+      <div v-show="visible">
+        <slot />
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -41,5 +43,15 @@ export default {
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
+}
+
+.panel-fade-enter,
+.panel-fade-leave-active {
+  opacity: 0;
+}
+
+.panel-fade-enter-active,
+.panel-fade-leave-active {
+  transition: opacity 0.4s linear;
 }
 </style>
