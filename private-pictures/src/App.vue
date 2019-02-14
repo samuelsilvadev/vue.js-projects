@@ -15,7 +15,7 @@
         :key="photo.id"
       >
         <photo-panel :title="photo.title">
-          <img :src="photo.url" :alt="photo.title" />
+          <responsive-image :src="photo.url" :alt="photo.title" />
         </photo-panel>
       </li>
     </ul>
@@ -25,10 +25,12 @@
 <script>
 import { BASE_API, PHOTOS_END_POINT } from "./config/api.js";
 import PhotoPanel from "./components/shared/PhotoPanel";
+import ResponsiveImage from "./components/shared/ResponsiveImage";
 
 export default {
   components: {
-    "photo-panel": PhotoPanel
+    "photo-panel": PhotoPanel,
+    "responsive-image": ResponsiveImage
   },
   computed: {
     filteredPhotos() {
@@ -96,10 +98,5 @@ export default {
   display: inline-block;
   margin-right: 15px;
   width: 200px;
-}
-
-.photos-list__item img {
-  max-width: 100%;
-  width: 100%;
 }
 </style>
