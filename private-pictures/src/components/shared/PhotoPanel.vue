@@ -1,13 +1,22 @@
 <template>
   <section class="photo-panel">
-    <h2 class="photo-panel__title">{{ title }}</h2>
-    <slot />
+    <h2 class="photo-panel__title" v-on:dblclick="visible = !visible">
+      {{ title }}
+    </h2>
+    <div v-show="visible">
+      <slot />
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  props: ["title"]
+  props: ["title"],
+  data() {
+    return {
+      visible: true
+    };
+  }
 };
 </script>
 
@@ -27,6 +36,7 @@ export default {
 .photo-panel__title {
   background-color: lightblue;
   border-bottom: 2px solid;
+  cursor: pointer;
   margin: 0 0 15px 0;
   padding: 10px;
   text-align: center;
