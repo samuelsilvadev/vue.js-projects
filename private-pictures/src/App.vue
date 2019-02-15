@@ -1,22 +1,18 @@
 <template>
   <div id="app">
-    <nav>
-      <ul>
-        <li v-for="route of routes" :key="route.path">
-          <router-link :to="route.path ? route.path : '/'">{{
-            route.title
-          }}</router-link>
-        </li>
-      </ul>
-    </nav>
+    <navigation :routes="routes" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { routes } from "./routes";
+import Menu from "./components/menu/Menu";
 
 export default {
+  components: {
+    navigation: Menu
+  },
   data() {
     return {
       routes
