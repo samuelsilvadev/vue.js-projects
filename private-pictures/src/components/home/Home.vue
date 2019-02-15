@@ -16,6 +16,12 @@
       >
         <photo-panel :title="photo.title">
           <responsive-image :src="photo.url" :alt="photo.title" />
+          <btn
+            type="button"
+            text="Remove"
+            buttonStyle="danger"
+            v-on:click.native="remove(photo)"
+          />
         </photo-panel>
       </li>
     </ul>
@@ -26,11 +32,13 @@
 import { BASE_API, PHOTOS_END_POINT } from "./../../config/api.js";
 import PhotoPanel from "./../shared/PhotoPanel";
 import ResponsiveImage from "./../shared/ResponsiveImage";
+import Button from "./../shared/Button";
 
 export default {
   components: {
     "photo-panel": PhotoPanel,
-    "responsive-image": ResponsiveImage
+    "responsive-image": ResponsiveImage,
+    btn: Button
   },
   computed: {
     filteredPhotos() {
@@ -55,6 +63,13 @@ export default {
       .get(`${BASE_API}${PHOTOS_END_POINT}`)
       .then(response => response.json())
       .then(photos => (this.photos = photos));
+  },
+  methods: {
+    remove(photo) {
+      if (confirm("Do you really want remove this photo?")) {
+        alert("something...", photo.name);
+      }
+    }
   }
 };
 </script>
