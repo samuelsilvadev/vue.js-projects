@@ -4,7 +4,16 @@
 
 <script>
 export default {
-  props: ["src", "alt"]
+  props: {
+    src: {
+      type: String,
+      required: true
+    },
+    alt: {
+      type: String,
+      required: true
+    }
+  }
 };
 </script>
 
